@@ -21,8 +21,15 @@ int main(int argc, char **argv) {
     // Sequence of user input -> store in fields of `student`
     
 	// Student ID
-	std::cout << "Please enter the student's id number: ";
-	std::cin >> student.id;
+	// Non-negative number
+	student.id = -1;
+	while(student.id < 0) {
+		std::cout << "Please enter the student's id number: ";
+		std::cin >> student.id;
+		if(student.id < 0) {
+			std::cout << "Sorry, I cannot understand your answer" << std::endl;
+		}
+	}
     
 	// First name
     student.f_name = new char[20];
@@ -34,16 +41,29 @@ int main(int argc, char **argv) {
 	std::cout << "Please enter the student's last name: ";
 	std::cin >> student.l_name;
     
-	// Number of assignments
-	std::cout << "Please enter how many assignments were graded: ";
-	std::cin >> student.n_assignments;
-	std::cout << std::endl;
+	// Number of assignments, n >= 1	
+	student.n_assignments = 0;
+	while(student.n_assignments < 1) {
+		std::cout << "Please enter how many assignments were graded: ";
+		std::cin >> student.n_assignments; // 'A6' fucks it
+		if(student.n_assignments < 1) {
+			std::cout << "Sorry, I cannot understand your answer" << std::endl;
+		}
+	}
     
 	// Grades of assignments
+	// Non-negative number
 	student.grades = new double[student.n_assignments];
-	for(int i = 0; i < student.n_assignments; i++){
-		std::cout << "Please enter grade for assignment " << i << ": ";
-		std::cin >> student.grades[i];
+	for(int i = 0; i < student.n_assignments; i++) {
+		student.grades[i] = -1;
+		while(student.grades[i] < 0) {
+			std::cout << "Please enter grade for assignment " << i << ": ";
+			std::cin >> student.grades[i];
+			if(student.grades[i] < 0) {
+				std::cout << "Sorry, I cannot understand your answer" << std::endl;
+			}
+		}
+	
 	}
 	
 	double avg = 0.0;
