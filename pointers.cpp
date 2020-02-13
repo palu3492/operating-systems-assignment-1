@@ -1,10 +1,6 @@
 // compile: g++ -std=c++11 -o pointers pointers.cpp
 #include <iostream>
-#include <string>
-#include <cstring>
-#include <sstream> 
 #include <iomanip>
-// #include<limits>
 #include<regex>
 
 using namespace std; // allows omitting std::
@@ -82,9 +78,9 @@ void calculateStudentAverage(void *object, double *avg) {
 	*avg = total/size;
 }
 
-// Function to take user input and error check
+// Function to take user input and error check it
 void getUserInput(string msg, int min, double *var){
-	string input = "";	
+	string input;	
 	do{
 		cout << msg;
 		cin >> input;
